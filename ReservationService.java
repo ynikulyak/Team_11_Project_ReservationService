@@ -26,14 +26,14 @@ public class ReservationService {
 		this.reservationRepository = reservationRepository;
 	}
 	
-	public Reservation searchReservation(int idReservation) {
-		log.info("Reservation retrieve: " + idReservation);
-		Reservation r = reservationRepository.findById(idReservation);
+	public Reservation searchReservation(int Reservation) {
+		log.info("Reservation retrieve: " + Reservation);
+		Reservation r = reservationRepository.findByidReservation(Reservation);
 		if(r != null) {
-			log.info("Reservation retrieved); " +r.toString());
+			log.info("Reservation retrieved): " +r.toString());
 			return r;
 		} else {
-			log.info("reservation retrieve failed. Not Found. : " +idReservation);
+			log.info("reservation retrieve failed. Not Found. : " +Reservation);
 			return null;
 		}
 		}
