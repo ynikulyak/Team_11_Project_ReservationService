@@ -1,8 +1,13 @@
 package cst438.domain;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
 
-public interface ReservationRepository extends JpaRepository<Reservation, Long>{
+import org.springframework.data.repository.CrudRepository;
 
-	Reservation findByidReservation(int idReservation);
+public interface ReservationRepository extends CrudRepository<Reservation, Long> {
+
+	Reservation findById(int idReservation);
+	
+	List<Reservation> findBypassenger_idPassenger(int passenger_idPassenger);
+
 }
