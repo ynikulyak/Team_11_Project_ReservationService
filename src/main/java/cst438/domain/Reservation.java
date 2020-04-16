@@ -2,49 +2,47 @@ package cst438.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="reservation")
 public class Reservation {
 
-	@Column(name = "idReservation")
-	private int idReservation;
-	
-	@Column(name = "rentalCar")
+   @Id
+	private int id;
+   @Column(name="rental_car")
 	private String rentalCar;
-	
-	@Column(name = "shuttle")
 	private String shuttle;
-	
-	@Column(name = "hotel")
 	private String hotel;
-	
-	@Column(name = "seatPref")
+	@Column(name="seat_pref")
 	private String seatPref;
+	@Column(name="flight_id")
+	private int flightId;
+	@Column(name="passenger_id")
+	private int passengerId;
 	
-	@Column(name = "Flight_idFlight")
-	private int Flight_idFlight;
-	
-	@Column(name = "passenger_idPassenger")
-	private int passenger_idPassenger;
+	public Reservation() {
+	   this(0, 0, 0, "no", "no", "no", "no");
+	}
 
-	public Reservation(int idReservation, String rentalCar, String shuttle, String hotel, String seatPref,
-			int flight_idFlight, int passenger_idPassenger) {
+	public Reservation(int idReservation, int passenger_idPassenger, int flight_idFlight, String rentalCar, String shuttle, String hotel, String seatPref) {
 		super();
-		this.idReservation = idReservation;
+		this.id = idReservation;
 		this.rentalCar = rentalCar;
 		this.shuttle = shuttle;
 		this.hotel = hotel;
 		this.seatPref = seatPref;
-		Flight_idFlight = flight_idFlight;
-		this.passenger_idPassenger = passenger_idPassenger;
+		this.flightId = flight_idFlight;
+		this.passengerId = passenger_idPassenger;
 	}
 
 	public int getIdReservation() {
-		return idReservation;
+		return id;
 	}
 
 	public void setIdReservation(int idReservation) {
-		this.idReservation = idReservation;
+		this.id = idReservation;
 	}
 
 	public String getRentalCar() {
@@ -79,21 +77,19 @@ public class Reservation {
 		this.seatPref = seatPref;
 	}
 
-	public int getFlight_idFlight() {
-		return Flight_idFlight;
+	public int getFlightId() {
+		return flightId;
 	}
 
-	public void setFlight_idFlight(int flight_idFlight) {
-		Flight_idFlight = flight_idFlight;
+	public void setFlightId(int flight_idFlight) {
+		this.flightId = flight_idFlight;
 	}
 
-	public int getPassenger_idPassenger() {
-		return passenger_idPassenger;
+	public int getPassengerId() {
+		return passengerId;
 	}
 
-	public void setPassenger_idPassenger(int passenger_idPassenger) {
-		this.passenger_idPassenger = passenger_idPassenger;
+	public void setPassengerId(int passenger_idPassenger) {
+		this.passengerId = passenger_idPassenger;
 	}
-
-	public String message;
 }

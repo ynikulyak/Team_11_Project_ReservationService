@@ -1,13 +1,17 @@
 package cst438.domain;
 
 import java.util.List;
+import java.util.Optional;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
-public interface ReservationRepository extends CrudRepository<Reservation, Long> {
+public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
 
-	Reservation findById(int idReservation);
+	Optional<Reservation> findById(int reservationId);
 	
-	List<Reservation> findBypassenger_idPassenger(int passenger_idPassenger);
-
+	Optional<Reservation> findByFlightId(int flightId);
+	
+	@Query("select r from Reservation r where r.passengerId = ?1")
+	List<Reservation> findByPassengerId(int passengerId);
 }
