@@ -16,20 +16,29 @@ public class Reservation {
    private Long id;
    @Column(name = "rental_car")
    private String rentalCar;
+   @Column(name = "shuttle")
    private String shuttle;
+   @Column(name = "hotel")
    private String hotel;
    @Column(name = "seat_pref")
    private String seatPref;
    @Column(name = "flight_id", updatable = false)
    private long flightId;
-   @Column(name = "passenger_id", updatable = false)
-   private long passengerId;
+   @Column(name = "first_name")
+   private String firstName;
+   @Column(name = "last_name")
+   private String lastName;
+   @Column(name = "email")
+   private String email;
+   @Column(name = "passport_number")
+   private String passportNumber;
+
 
    public Reservation() {
-      this(null, 0, 0, "no", "no", "no", "no");
+      this(null, 0, null, null, null, null, "no", "no", "no", "no");
    }
 
-   public Reservation(Long id, long passengerId, long flightId, String rentalCar, String shuttle, String hotel,
+   public Reservation(Long id, long flightId, String firstName, String lastName, String email, String passportNumber, String rentalCar, String shuttle, String hotel,
          String seatPref) {
       super();
       this.id = id;
@@ -38,7 +47,42 @@ public class Reservation {
       this.hotel = hotel;
       this.seatPref = seatPref;
       this.flightId = flightId;
-      this.passengerId = passengerId;
+      this.passportNumber = passportNumber;
+      this.firstName = firstName;
+      this.lastName = lastName;
+      this.email = email;
+   }
+
+   public String getFirstName() {
+      return firstName;
+   }
+
+   public void setFirstName(String firstName) {
+      this.firstName = firstName;
+   }
+
+   public String getLastName() {
+      return lastName;
+   }
+
+   public void setLastName(String lastName) {
+      this.lastName = lastName;
+   }
+
+   public String getEmail() {
+      return email;
+   }
+
+   public void setEmail(String email) {
+      this.email = email;
+   }
+
+   public String getPassportNumber() {
+      return passportNumber;
+   }
+
+   public void setPassportNumber(String passportNumber) {
+      this.passportNumber = passportNumber;
    }
 
    public Long getId() {
@@ -87,13 +131,5 @@ public class Reservation {
 
    public void setFlightId(long flightId) {
       this.flightId = flightId;
-   }
-
-   public long getPassengerId() {
-      return passengerId;
-   }
-
-   public void setPassengerId(long passengerId) {
-      this.passengerId = passengerId;
    }
 }

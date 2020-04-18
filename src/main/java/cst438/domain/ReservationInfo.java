@@ -4,6 +4,7 @@ public class ReservationInfo {
    
    Long reservationId;
    Long flightId;
+   String passportNumber;
    String firstName;
    String lastName;
    String email;
@@ -22,14 +23,15 @@ public class ReservationInfo {
    String airportLocationTo;
    
    public ReservationInfo() {
-      this(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+      this(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
    }
 
-   public ReservationInfo(Long reservationId, Long flightId, String firstName, String lastName, String email,
+   public ReservationInfo(Long reservationId, Long flightId, String passportNumber, String firstName, String lastName, String email,
          String rentalCar, String shuttle, String hotel, String seatPref, String flightCode, String fromAirportCode,
          String toAirportCode, String departure, String arrival, String airportTitleFrom, String airportLocationFrom,
          String airportTitleTo, String airportLocationTo) {
       super();
+      this.passportNumber = passportNumber;
       this.reservationId = reservationId;
       this.flightId = flightId;
       this.firstName = firstName;
@@ -64,6 +66,14 @@ public class ReservationInfo {
 
    public void setFlightId(Long flightId) {
       this.flightId = flightId;
+   }
+   
+   public String getPassportNumber() {
+      return passportNumber;
+   }
+   
+   public void setPassportNumber(String passportNumber) {
+      this.passportNumber = passportNumber;
    }
 
    public String getFirstName() {
@@ -218,6 +228,11 @@ public class ReservationInfo {
             return false;
       } else if (!airportTitleFrom.equals(other.airportTitleFrom))
          return false;
+      if (passportNumber == null) {
+         if (other.passportNumber != null)
+            return false;
+      } else if (!passportNumber.equals(other.passportNumber))
+         return false;
       if (airportTitleTo == null) {
          if (other.airportTitleTo != null)
             return false;
@@ -297,7 +312,7 @@ public class ReservationInfo {
             + ", hotel=" + hotel + ", seatPref=" + seatPref + ", flightCode=" + flightCode + ", fromAirportCode="
             + fromAirportCode + ", toAirportCode=" + toAirportCode + ", departure=" + departure + ", arrival=" + arrival
             + ", airportTitleFrom=" + airportTitleFrom + ", airportLocationFrom=" + airportLocationFrom
-            + ", airportTitleTo=" + airportTitleTo + ", airportLocationTo=" + airportLocationTo + "]";
+            + ", airportTitleTo=" + airportTitleTo + ", airportLocationTo=" + airportLocationTo + ", passportNumber " + passportNumber + "]";
    }
    
    
