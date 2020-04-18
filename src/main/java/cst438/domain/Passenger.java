@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,7 +14,8 @@ import javax.persistence.Table;
 public class Passenger {
    
    @Id
-   private int id;
+   @GeneratedValue(strategy = GenerationType.IDENTITY) // MySQL generated value
+   private Long id;
    private String firstName;
    private String lastName;
    private String email;
@@ -21,10 +24,10 @@ public class Passenger {
    private byte[] passwordHashCode;
    
    public Passenger() {
-      this(0, "", "", "", "", null);
+      this(null, "", "", "", "", null);
    }
    
-   public Passenger(int id, String firstName, String lastName, String email, String username, byte[] passwordHashCode) {
+   public Passenger(Long id, String firstName, String lastName, String email, String username, byte[] passwordHashCode) {
       super();
       this.id = id;
       this.firstName = firstName;
@@ -35,12 +38,12 @@ public class Passenger {
    }
 
 
-   public int getId() {
+   public Long getId() {
       return id;
    }
 
 
-   public void setId(int id) {
+   public void setId(Long id) {
       this.id = id;
    }
 
@@ -104,11 +107,11 @@ public class Passenger {
 
    @Override
    public int hashCode() {
-      final int prime = 31;
+      int prime = 31;
       int result = 1;
       result = prime * result + ((email == null) ? 0 : email.hashCode());
       result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
-      result = prime * result + id;
+      result = prime * result + (id == null ? 0 : id.intValue());
       result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
       result = prime * result + Arrays.hashCode(passwordHashCode);
       result = prime * result + ((username == null) ? 0 : username.hashCode());

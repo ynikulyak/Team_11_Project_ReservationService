@@ -8,10 +8,10 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
 
-	Optional<Reservation> findById(int reservationId);
+	Optional<Reservation> findById(long reservationId);
 	
-	Optional<Reservation> findByFlightId(int flightId);
+	Optional<Reservation> findByFlightId(long flightId);
 	
 	@Query("select r from Reservation r where r.passengerId = ?1")
-	List<Reservation> findByPassengerId(int passengerId);
+	List<Reservation> findByPassengerId(long passengerId);
 }
