@@ -10,20 +10,13 @@
       <relativePath /> <!-- lookup parent from repository -->
    </parent>
    <groupId>cst438</groupId>
-   <artifactId>team11-reservation-service</artifactId>
+   <artifactId>cst438hw2</artifactId>
    <version>0.0.1-SNAPSHOT</version>
-   <name>team11-reservation-service</name>
-   <description>team11-reservation-service</description>
+   <name>cst438hw2</name>
+   <description>cst438 homework 3 RabbitMQ</description>
 
    <properties>
       <java.version>1.8</java.version>
-
-      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-      <maven.compiler.source>${java.version}</maven.compiler.source>
-      <maven.compiler.target>${java.version}</maven.compiler.target>
-      <junit-platform.version>5.3.1</junit-platform.version>
-
    </properties>
 
    <dependencies>
@@ -86,7 +79,7 @@
             </exclusion>
          </exclusions>
       </dependency>
-      <dependency>
+          <dependency>
          <groupId>org.springframework.boot</groupId>
          <artifactId>spring-boot-starter-amqp</artifactId>
       </dependency>
@@ -95,20 +88,12 @@
          <artifactId>spring-rabbit-test</artifactId>
          <scope>test</scope>
       </dependency>
-
       <dependency>
-         <groupId>org.junit.jupiter</groupId>
-         <artifactId>junit-jupiter-api</artifactId>
-         <version>${junit-platform.version}</version>
+         <groupId>junit</groupId>
+         <artifactId>junit</artifactId>
+         <version>4.13</version>
          <scope>test</scope>
       </dependency>
-      <dependency>
-         <groupId>org.junit.jupiter</groupId>
-         <artifactId>junit-jupiter-engine</artifactId>
-         <version>${junit-platform.version}</version>
-         <scope>test</scope>
-      </dependency>
-
 
    </dependencies>
 
@@ -117,16 +102,6 @@
          <plugin>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-maven-plugin</artifactId>
-         </plugin>
-         <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>2.22.0</version>
-         </plugin>
-         <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-failsafe-plugin</artifactId>
-            <version>2.22.0</version>
          </plugin>
       </plugins>
    </build>

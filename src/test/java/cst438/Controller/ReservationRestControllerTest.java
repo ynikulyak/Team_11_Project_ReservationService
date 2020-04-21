@@ -3,9 +3,8 @@ package cst438.Controller;
 import static org.junit.jupiter.api.Assertions.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import cst438.domain.Passenger;
 import cst438.domain.Reservation;
-import cst438.service.PassengerService;
+import cst438.domain.ReservationInfo;
 import cst438.service.ReservationService;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -53,7 +52,7 @@ public class ReservationRestControllerTest {
 	@Test
 	public void getReservation() throws Exception{
 		Reservation reservation = new Reservation((long) 1, 1, "Rei", "Slogan", "na@gmail.com", "jellybean", null, null, null, null);
-		given(reservationService.getReservation((long) 1)).willReturn(Optional.of(reservation));
+		given(reservationService.findReservation((long) 1)).willReturn(reservation);
 		
 		//When
 		MockHttpServletResponse response = mvc.perform(get("/api/aiport/v1//1").contentType(MediaType.APPLICATION_JSON).content(json.write(reservation).getJson()))
@@ -65,8 +64,8 @@ public class ReservationRestControllerTest {
 	
 	@Test
 	public void getReservationNotFound() throws Exception{
-		//get passenger email if is not there
-		given(reservationService.getReservation((long) 3)).willReturn(Optional.empty());
+
+		given(reservationService.getReservationInfoById((long) 3)).willReturn(Optional.empty());
 		
 		ResultActions response = mvc.perform(get("/api/passenger/v1/1"));
 		

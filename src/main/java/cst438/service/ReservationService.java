@@ -73,5 +73,32 @@ public class ReservationService {
             seatPref, flightCode, fromAirportCode, toAirportCode, departure, arrival, airportTitleFrom,
             airportLocationFrom, airportTitleTo, airportLocationTo));
    }
+   
+   
+   public Reservation findReservation(long flightId) {
+   	Optional<Reservation> result = reservationRepository.findById(flightId);
+   	Reservation theReservation = null;
+   	if(result.isPresent()) {
+   		theReservation = result.get();
+   		}else
+   		{
+   			log.info("Did not find Reservation flightId -" + flightId);
+   		}
+   	return theReservation;
+   }
+   public boolean deleteReservation(Long flightId){
+   	log.info("Reservation retrieved: "+flightId);
+   	if(flightId != null) {
+   		reservationRepository.deleteById(flightId);
+   		return true;
+   		}else
+   		{
+   			return false;
+   		}
+   }
+   
+   public void deleteById(Long flightId) {
+   	reservationRepository.deleteById(flightId);
+   }
 
 }

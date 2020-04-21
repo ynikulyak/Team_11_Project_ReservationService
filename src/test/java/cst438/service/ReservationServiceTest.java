@@ -65,7 +65,7 @@ public class ReservationServiceTest {
 		Reservation testReservation = new Reservation(
 				(long) 2, 2, "Zedn", "unad", "zu@gmail.com", "p3432", null, null, null, null);
 		//entry mock into data
-		given(reservationRepository.findbyId((long) 2)).willReturn(testReservation);
+		given(reservationRepository.findById((long) 2)).willReturn(Optional.of(testReservation));
 		boolean result = reservationService.deleteReservation((long) 2);
 		assertThat(result).isTrue();
 		verify(reservationRepository).delete(testReservation);
@@ -77,7 +77,7 @@ public class ReservationServiceTest {
 		Reservation testReservation = new Reservation(
 				(long) 2, 2, "Zedn", "unad", "zu@gmail.com", "p3432", null, null, null, null);
 		//entry mock into data
-		given(reservationRepository.findbyId((long) 3)).willReturn(testReservation);
+		given(reservationRepository.findById((long) 3)).willReturn(Optional.of(testReservation));
 		boolean result = reservationService.deleteReservation((long) 2);
 		assertThat(result).isFalse();
 		verify(reservationRepository).delete(testReservation);
