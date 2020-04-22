@@ -9,8 +9,5 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 	Optional<Reservation> findById(long reservationId);
 	
 	Optional<Reservation> findByFlightId(long flightId);
-
-	public void deleteById(long flightId);
 	
-	Reservation findByFirstName(String FirstName);
 }
