@@ -13,7 +13,9 @@ public class Flight {
    public String airportTitleTo;
    public String airportLocationTo;
    
-   
+   public Flight() {
+      this(null, null, null, null, null, null, null, null, null, null);
+   }
    public Flight(Long id, String flightCode, String fromAirportCode, String toAirportCode, String departure,
          String arrival, String airportTitleFrom, String airportLocationFrom, String airportTitleTo,
          String airportLocationTo) {

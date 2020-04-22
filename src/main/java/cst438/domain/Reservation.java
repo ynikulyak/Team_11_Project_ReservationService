@@ -35,7 +35,7 @@ public class Reservation {
 
 
    public Reservation() {
-      this(null, 0, null, null, null, null, "no", "no", "no", "no");
+      this(null, 0, null, null, null, null, null, null, null, null);
    }
 
    public Reservation(Long id, long flightId, String firstName, String lastName, String email, String passportNumber, String rentalCar, String shuttle, String hotel,
